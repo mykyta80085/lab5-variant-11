@@ -4,3 +4,7 @@
 Студент: Возний Микита
 Група: 2
 '''
+import math
+def f(x):
+    return(math.atan(x)-1/x)
+eps = 3*10^(-4)
