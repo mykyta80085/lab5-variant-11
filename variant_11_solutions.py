@@ -7,7 +7,7 @@
 import math
 def f(x):
     return(math.atan(x)-1/x)
-eps = 3*10**(-4)
+eps = 0.0004
 '''
 На графіку бачимо, що корінь лежить десь між 1 і 2
 Щоб похідна phi(x) по модулю була менше 1 на цьому відрізку, виберемо phi(x) = 1/arctan(x)
@@ -23,10 +23,10 @@ def phi(x):
 отже максимум по модулю похідної на відрізку (x_n,x_n-1) буде при min(...)
 '''
 def dphi(x):
-    return( 1 / ( (x**2+1) * (math.atan(x)**2) ) )
+    return( -1 / ( (x**2+1) * (math.atan(x)**2) ) )
 
-def solve_iteration():
-    i = 0
+def solve_iteration(phi,dphi,eps):
+    i = 1
     x1 = x0
     x2 = phi(x0)
     q = 1
@@ -34,7 +34,7 @@ def solve_iteration():
     while solved == False:
         q = dphi(min(x1,x2))
         if dphi(max(x1,x2)) < 0:
-            if x2-x1 < eps:
+            if abs(x2-x1) < eps:
                 solved = True
                 continue
         else:
@@ -48,4 +48,6 @@ def solve_iteration():
         print(f'Кількість ітерацій {i} X_n {x1} X_n+1 {x2}')
     print(f"Розв'язано, x = {x2}, кількість ітерацій {i}")
 
-solve_iteration()
+solve_iteration(phi,dphi,0.0004)
+
+
