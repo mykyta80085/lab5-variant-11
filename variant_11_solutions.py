@@ -56,22 +56,24 @@ def solve_iteration(phi,dphi,eps):
     returnlist.append(i)
     return(returnlist)
 
-def save_to_file(solve_iteration,phi,dphi,eps):
+def save_to_file(biglist):
     #спочатку можифікуємо функцію ітерації щоб замість друкування вона повертала лог-список
-    iterlist = solve_iteration(phi,dphi,eps)
     with open("results_variant_11.txt", "w", encoding="utf-8") as file:
-        iterations = iterlist[-1]
-        x = iterlist[-2]
+        iterations = biglist[-1]
+        x = biglist[-2]
         file.write(f'Корінь = {x}\n')
         file.write(f'Кількість ітерацій = {iterations}\n')
-        for k in range(len(iterlist)-2):
-            file.write(f'{iterlist[k]}\n')
+        for k in range(len(biglist)-2):
+            file.write(f'{biglist[k]}\n')
 
 if __name__ == "__main__":
     x0 = 1.5
     eps = 0.0004
-    save_to_file(solve_iteration,phi,dphi,eps)
-    print('кількість ітерацій -',solve_iteration(phi,dphi,eps)[-1],'корінь -',solve_iteration(phi,dphi,eps)[-2])
+    biglist = solve_iteration(phi,dphi,eps)
+    save_to_file(biglist)
+
+    #save_to_file(solve_iteration,phi,dphi,eps)
+    print('кількість ітерацій -',biglist[-1],'корінь -',biglist[-2])
 
 
 
