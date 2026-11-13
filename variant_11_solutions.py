@@ -4,6 +4,7 @@
 Студент: Возний Микита
 Група: 2
 '''
+
 import math
 def f(x):
     return(math.atan(x)-1/x)
@@ -55,9 +56,21 @@ def solve_iteration(phi,dphi,eps):
     returnlist.append(i)
     return(returnlist)
 
-def save_to_file(solve_iteration):
+def save_to_file(solve_iteration,phi,dphi,eps):
     #спочатку можифікуємо функцію ітерації щоб замість друкування вона повертала лог-список
-    pass
-A = solve_iteration(phi,dphi,0.0004)
+    iterlist = solve_iteration(phi,dphi,eps)
+    with open("results_variant_11.txt", "w", encoding="utf-8") as file:
+        iterations = iterlist[-1]
+        x = iterlist[-2]
+        file.write(f'Корінь = {x}\n')
+        file.write(f'Кількість ітерацій = {iterations}\n')
+        for k in range(len(iterlist)-2):
+            file.write(f'{iterlist[k]}\n')
+
+if __name__ == "__main__":
+    save_to_file(solve_iteration,phi,dphi,eps)
+
+
+
 
 
