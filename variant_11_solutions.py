@@ -8,12 +8,12 @@
 import math
 def f(x):
     return(math.atan(x)-1/x)
-eps = 0.0004
+#eps = 0.0004
 '''
 На графіку бачимо, що корінь лежить десь між 1 і 2
 Щоб похідна phi(x) по модулю була менше 1 на цьому відрізку, виберемо phi(x) = 1/arctan(x)
 '''
-x0 = 1.5
+#x0 = 1.5
 a = 1
 b = 2
 
@@ -68,8 +68,10 @@ def save_to_file(solve_iteration,phi,dphi,eps):
             file.write(f'{iterlist[k]}\n')
 
 if __name__ == "__main__":
+    x0 = 1.5
+    eps = 0.0004
     save_to_file(solve_iteration,phi,dphi,eps)
-
+    print('кількість ітерацій -',solve_iteration(phi,dphi,eps)[-1],'корінь -',solve_iteration(phi,dphi,eps)[-2])
 
 
 
