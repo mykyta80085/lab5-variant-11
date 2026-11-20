@@ -50,7 +50,7 @@ def solve_iteration(phi,dphi,eps):
         x1 = x2
         x2 = phi(x1)
         #print(f'Кількість ітерацій {i} X_n {x1} X_n+1 {x2}')
-        returnlist.append(f'Кількість ітерацій {i} X_n {x1} X_n+1 {x2}')
+        returnlist.append(f'Кількість ітерацій {i:<5} X_n {x1:<15.8f} X_n+1 {x2:<15.8f}')
     #print(f"Розв'язано, x = {x2}, кількість ітерацій {i}")
     returnlist.append(x2)
     returnlist.append(i)
